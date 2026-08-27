@@ -17,6 +17,7 @@
   <img src="https://img.shields.io/badge/Gymnasium-%E2%89%A51.3-brightgreen" alt="Gymnasium"/>
   <img src="https://img.shields.io/badge/Stable%20Baselines3-PPO-orange" alt="SB3 PPO"/>
   <img src="https://img.shields.io/badge/%EC%96%B8%EC%96%B4-%ED%95%9C%EA%B5%AD%EC%96%B4-red" alt="한국어"/>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow" alt="MIT License"/></a>
 </p>
 
 이 저장소는 전자책 **《MuJoCo로 알아보는 Bio-inspired Robotics: 사족보행편》**(지은이 윤상현, sxngt)의 실습 코드입니다. 책에 실린 모든 코드와 그림은 이 저장소에서 실행해 검증한 것이며, 책의 각 절이 이 저장소의 스크립트 하나와 짝을 이룹니다. 책은 위키독스에서 읽을 수 있습니다.
@@ -164,4 +165,4 @@ uv run mjpython ch07-first-gait/03_trot.py --view --speed 0.5    # macOS는 창�
 
 ## 저작권
 
-© 2026 윤상현(sxngt). 이 저장소의 코드는 학습 목적으로 자유롭게 실행하고 수정할 수 있습니다. 책의 본문과 그림의 저작권은 저자에게 있으며, 책은 [위키독스](https://wikidocs.net/book/21135)에서 읽을 수 있습니다. MuJoCo, Gymnasium, Stable Baselines3, PyTorch, JAX는 각 저작권자의 프로젝트입니다.
+이 저장소의 코드는 [MIT 라이선스](LICENSE)로 배포합니다(© 2026 윤상현(sxngt)). 자유롭게 쓰고 고치고 나누되 저작권 표시를 남겨 주세요. 책의 본문과 그림의 저작권은 저자에게 있으며, 책은 [위키독스](https://wikidocs.net/book/21135)에서 읽을 수 있습니다. MuJoCo, Gymnasium, Stable Baselines3, PyTorch, JAX는 각 저작권자의 프로젝트입니다.
