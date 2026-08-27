@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import os
 import numpy as np
 from PIL import Image, ImageDraw
 
@@ -20,11 +21,27 @@ def _ensure_framebuffer(model: mujoco.MjModel, width: int, height: int) -> None:
     model.vis.global_.offheight = max(int(model.vis.global_.offheight), height)
 
 
+def _label_font(size: int):
+    """matplotlib에 딸린 DejaVu Sans를 쓴다(어느 OS에나 있다). 없으면 PIL 기본 글꼴."""
+    try:
+        import matplotlib
+        from PIL import ImageFont
+        path = os.path.join(os.path.dirname(matplotlib.__file__), "mpl-data", "fonts", "ttf", "DejaVuSans.ttf")
+        return ImageFont.truetype(path, size)
+    except Exception:
+        from PIL import ImageFont
+        return ImageFont.load_default()
+
+
 def _label(frame: np.ndarray, text: str) -> np.ndarray:
     im = Image.fromarray(frame)
     d = ImageDraw.Draw(im)
-    d.rectangle([8, 8, 8 + 9 * len(text) + 12, 34], fill=(255, 255, 255))
-    d.text((14, 12), text, fill=(20, 20, 20))
+    size = max(14, im.width // 30)                       # 900 px 프레임에서 30 px: 전자책 폭에서도 읽힌다
+    font = _label_font(size)
+    box = d.textbbox((0, 0), text, font=font)
+    pad = size // 3
+    d.rectangle([8, 8, 8 + (box[2] - box[0]) + 2 * pad, 8 + (box[3] - box[1]) + 2 * pad], fill=(255, 255, 255))
+    d.text((8 + pad, 8 + pad - box[1]), text, fill=(20, 20, 20), font=font)
     return np.asarray(im)
 
 

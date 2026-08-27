@@ -56,7 +56,7 @@ ax.plot(frs, alexander_stride(frs), color="#999999", label="Alexander & Jayes: 2
 ax.axvline(0.5, color="#bbbbbb", ls=":"); ax.text(0.5, 3.9, "walk / trot", fontsize=8, color="#666666", ha="center")
 ax.axvline(2.5, color="#bbbbbb", ls=":"); ax.text(2.5, 3.9, "trot / gallop", fontsize=8, color="#666666", ha="center")
 for name, fr, rs, _ in robot:
-    ax.plot(fr, rs, "o", color="#1f77b4"); ax.annotate(name, (fr, rs), textcoords="offset points", xytext=(6, -3 if "L0.12" not in name else 6), fontsize=7)
+    ax.plot(fr, rs, "o", color="#1f77b4"); _o = {"2 Hz L0.08": (-8, -12, "right"), "3 Hz L0.12": (6, -11, "left"), "4 Hz L0.12": (6, 8, "left")}.get(name.split("trot ")[-1], (6, -3, "left")); ax.annotate(name, (fr, rs), textcoords="offset points", xytext=_o[:2], ha=_o[2], fontsize=7)
 for k, (name, (Lh, v)) in enumerate(animals.items()):
     fr = froude(v, Lh); ax.plot(fr, alexander_stride(fr), "s", color="#d62728"); ax.annotate(name.split(" (")[0], (fr, alexander_stride(fr)), textcoords="offset points", xytext=(6, -3 - 10 * (k == 2)), fontsize=7)
 ax.set_xscale("log"); ax.set_ylim(0, 4.3); ax.set_xlabel("Froude number v^2 / (g L)"); ax.set_ylabel("relative stride length  stride / L")

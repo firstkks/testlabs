@@ -44,9 +44,10 @@ for n in ("R4_full", "C_scratch_push", "C_const20_6M", "C_curriculum_6M", "C_cur
     x, y = curve(n, "rollout/ep_len_mean"); axes[1].plot((x + off) / 1e6, y, color=COL[n], lw=1.0, label=n)
 axes[0].axvline(6.0, color="#bbbbbb", ls=":", lw=0.8); axes[1].axvline(6.0, color="#bbbbbb", ls=":", lw=0.8)
 axes[0].text(6.05, 250, "ramp ends: 60 N held", fontsize=7, color="#666666")
-axes[0].set_xlabel("timesteps [M]"); axes[0].set_ylabel("episode return"); axes[0].set_title("(a) return (pushes make it noisy)", fontsize=10); axes[0].legend(fontsize=6, loc="lower left")
-axes[1].set_xlabel("timesteps [M]"); axes[1].set_ylabel("episode length"); axes[1].set_title("(b) episode length (below 1000 = falls)", fontsize=10); axes[1].legend(fontsize=6, loc="lower left")
-fig.tight_layout(); fig.savefig(OUT / "ch12-fig07-curriculum-curves.png", dpi=200); plt.close(fig)
+axes[0].set_xlabel("timesteps [M]"); axes[0].set_ylabel("episode return"); axes[0].set_title("(a) return (pushes make it noisy)", fontsize=10)
+axes[1].set_xlabel("timesteps [M]"); axes[1].set_ylabel("episode length"); axes[1].set_title("(b) episode length (below 1000 = falls)", fontsize=10)
+h, l = axes[0].get_legend_handles_labels(); fig.legend(h, l, loc="lower center", ncol=min(4, max(1, len(l))), fontsize=7, frameon=False)
+fig.tight_layout(rect=(0, 0.1, 1, 1)); fig.savefig(OUT / "ch12-fig07-curriculum-curves.png", dpi=200); plt.close(fig)
 
 # 세밀한 밀기 시험: 힘 30~90 N, 양방향, seed 3개 → 생존율
 forces = (30, 40, 50, 60, 70, 80, 90)

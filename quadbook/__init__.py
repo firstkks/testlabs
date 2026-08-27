@@ -7,6 +7,27 @@
 
 from pathlib import Path
 
+try:  # 그림 기본값: 범례는 반투명하게, 자동 위치로 (데이터를 가리지 않게)
+    import matplotlib as _mpl
+    _mpl.rcParams["legend.framealpha"] = 0.55
+    _mpl.rcParams["legend.loc"] = "best"
+except Exception:
+    pass
+
+try:  # 그림 기본값: 범례는 반투명하게, 자동 위치로 (데이터를 가리지 않게)
+    import matplotlib as _mpl
+    _mpl.rcParams["legend.framealpha"] = 0.55
+    _mpl.rcParams["legend.loc"] = "best"
+except Exception:
+    pass
+
+try:  # 그림 기본값: 범례는 반투명하게, 자동 위치로 (데이터를 가리지 않게)
+    import matplotlib as _mpl
+    _mpl.rcParams["legend.framealpha"] = 0.55
+    _mpl.rcParams["legend.loc"] = "best"
+except Exception:
+    pass
+
 LABS_ROOT = Path(__file__).resolve().parent.parent
 MODELS_DIR = LABS_ROOT / "models"
 

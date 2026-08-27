@@ -60,7 +60,7 @@ for ax, key, title in zip(axes, ("speed", "fall", "cot"), ("speed [m/s]", "fall 
     ax.bar(x - 0.2, [results[(c, "baseline")][key] for c in names], 0.4, color="#999999", label="open-loop CPG (ch7)")
     ax.bar(x + 0.2, [results[(c, FINAL)][key] for c in names], 0.4, color="#17becf", label="final policy (ch12)")
     ax.set_xticks(x); ax.set_xticklabels(names, fontsize=7, rotation=20); ax.set_title(title, fontsize=10)
-axes[0].legend(fontsize=7)
+axes[0].legend(fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.35), ncol=2)
 fig.tight_layout(); fig.savefig(OUT / "ch13-fig02-robustness.png", dpi=200); plt.close(fig)
 
 model, venv, env = load_policy(FINAL, model_file=ROUGH)

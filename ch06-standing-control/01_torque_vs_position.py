@@ -98,7 +98,7 @@ ax.plot(tA, np.degrees(qA), label="(A) motor: constant 1 N.m for 2 s, then 0")
 ax.plot(tB, np.degrees(qB), label="(B) position: target 0.8 rad for 2 s, then 0")
 ax.axhline(np.degrees(theta_pred), color="#999999", ls=":", lw=1, label="gravity balance angle (predicted)")
 ax.axhline(np.degrees(0.8), color="#bbbbbb", ls="--", lw=1)
-ax.set_xlabel("time [s]"); ax.set_ylabel("hip angle [deg]"); ax.legend(fontsize=8)
+ax.set_xlabel("time [s]"); ax.set_ylabel("hip angle [deg]"); ax.legend(fontsize=8, loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=2)
 ax.set_title("torque without feedback vs position with built-in feedback")
 fig.tight_layout(); fig.savefig(OUT / "ch06-fig01-torque-vs-position.png", dpi=200); plt.close(fig)
 

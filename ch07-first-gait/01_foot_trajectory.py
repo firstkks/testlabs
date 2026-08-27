@@ -55,7 +55,7 @@ for h, k in q_c[::40]:
     errs.append(np.hypot(*(rel[[0, 2]] - kin.forward(h, k))))
 print(f"FK 검증: 우리 식과 MuJoCo 발 위치의 차이 최대 {1e3*max(errs):.3f} mm")
 
-fig, axes = plt.subplots(1, 3, figsize=(12, 3.8), sharey=True)
+fig, axes = plt.subplots(1, 3, figsize=(12, 3.0), sharey=True)
 for ax, path, title in zip(axes, (path_a, path_b, path_c), ("(a) hip sine only", "(b) hip + knee sine, 90 deg apart", "(c) designed: stance line + swing arc")):
     ax.plot(path[:, 0], path[:, 1], lw=1.5)
     ax.plot(path[0, 0], path[0, 1], "o", color="#d62728")

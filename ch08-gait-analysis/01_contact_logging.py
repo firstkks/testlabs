@@ -56,10 +56,10 @@ fig, axes = plt.subplots(2, 1, figsize=(9, 5), sharex=True)
 axes[0].plot(t[m], force, lw=1, label="LF touch sensor [N]")
 for thr, c in ((1.0, "#2ca02c"), (5.0, "#ff7f0e"), (20.0, "#d62728")):
     axes[0].axhline(thr, color=c, ls=":", lw=1, label=f"threshold {thr:g} N")
-axes[0].set_ylabel("normal force [N]"); axes[0].legend(fontsize=8, loc="upper right"); axes[0].set_title("(a) LF foot force during trot", fontsize=10)
+axes[0].set_ylabel("normal force [N]"); axes[0].legend(fontsize=8, loc="best"); axes[0].set_title("(a) LF foot force during trot", fontsize=10)
 axes[1].fill_between(t[m], 0, 1, where=geom, color="#4a90d9", alpha=0.6, label="contact list (geometry)")
 axes[1].plot(t[m], 1000 * log["foot_cmd"][m][:, 0] / 40 + 1.1, color="#555555", lw=1, label="commanded foot height (scaled)")
-axes[1].set_yticks([]); axes[1].set_xlabel("time [s]"); axes[1].legend(fontsize=8, loc="upper right"); axes[1].set_title("(b) binary contact vs commanded swing", fontsize=10)
+axes[1].set_yticks([]); axes[1].set_xlabel("time [s]"); axes[1].legend(fontsize=8, loc="best"); axes[1].set_title("(b) binary contact vs commanded swing", fontsize=10)
 fig.tight_layout(); fig.savefig(OUT / "ch08-fig01-contact-signals.png", dpi=200); plt.close(fig)
 
 # ---- 프레임: 접촉 상태를 라벨로 ----
