@@ -1,6 +1,6 @@
 """걸음 측정 도구 (8장). 접촉 로그에서 3장의 수치를 계산하고, 지지 다각형과 안정 여유를 잰다. 12장의 보상 설계도 이 함수들을 쓴다.
 
-- touchdowns(): 접촉 이진 신호에서 접지·이지 시각을 뽑는다.
+- touchdowns(): 접촉 이진 신호에서 접지·지면 이탈 시각을 뽑는다.
 - gait_metrics(): 다리별 duty factor β, 주기 T, LF 기준 상대 위상 φ, 보폭 λ (3.2절의 정의 그대로).
 - support_margin(): 닿아 있는 발들이 만드는 지지 다각형과 무게중심 투영점 사이의 부호 있는 거리 (3.5절).
 - froude(), relative_stride(): 동적 유사성 비교 (3.4절, Alexander & Jayes 1983).
@@ -15,7 +15,7 @@ from .robot import FOOT_GEOMS, foot_contacts
 
 
 def touchdowns(t, contact):
-    """접촉 이진 신호 → (접지 시각 목록, 이지 시각 목록)."""
+    """접촉 이진 신호 → (접지 시각 목록, 지면 이탈 시각 목록)."""
     iv = contacts_to_intervals(np.asarray(t), np.asarray(contact))
     return np.array([s for s, _ in iv]), np.array([e for _, e in iv])
 
